@@ -78,7 +78,12 @@ function toString() {
   string += "null";
   return string;
 }
-function insertAt(value, index) {}
+function insertAt(value, index) {
+  const nodeBefore = this.at(index - 1);
+  const newNode = ListNode(value);
+  newNode.next = nodeBefore.next;
+  nodeBefore.next = newNode;
+}
 function removeAt(index) {}
 
 // list object
@@ -94,6 +99,7 @@ function LinkedList(head = null) {
     contains,
     find,
     toString,
+    insertAt,
   };
 }
 
@@ -115,4 +121,8 @@ list.prepend(3);
 
 // console.log(list.find(1), list.find(2), list.find(3));
 
-console.log(list.toString());
+// console.log(list.toString());
+
+list.insertAt(546546, 1);
+
+console.log(list.head);
