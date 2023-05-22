@@ -68,7 +68,16 @@ function find(value) {
   }
   return null;
 }
-function toString() {}
+function toString() {
+  let currentNode = this.head;
+  let string = "";
+  while (currentNode) {
+    string += `( ${currentNode.value} ) ->  `;
+    currentNode = currentNode.next;
+  }
+  string += "null";
+  return string;
+}
 function insertAt(value, index) {}
 function removeAt(index) {}
 
@@ -84,6 +93,7 @@ function LinkedList(head = null) {
     pop,
     contains,
     find,
+    toString,
   };
 }
 
@@ -103,4 +113,6 @@ list.prepend(3);
 
 // console.log(list.contains(1), list.contains(1000), list.contains(3));
 
-console.log(list.find(1), list.find(2), list.find(3));
+// console.log(list.find(1), list.find(2), list.find(3));
+
+console.log(list.toString());
