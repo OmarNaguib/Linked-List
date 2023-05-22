@@ -34,7 +34,15 @@ function tail() {
   while (currentNode.next) currentNode = currentNode.next;
   return currentNode;
 }
-function at(index) {}
+function at(index) {
+  let currentNode = this.head;
+  let i = index;
+  while (currentNode && i > 0) {
+    currentNode = currentNode.next;
+    i -= 1;
+  }
+  return currentNode || null;
+}
 function pop() {}
 function contains(value) {}
 function find() {}
@@ -50,12 +58,14 @@ function LinkedList(head = null) {
     prepend,
     size,
     tail,
+    at,
   };
 }
 
 const list = LinkedList();
 list.prepend(1);
 list.prepend(3);
-console.log(list.size());
-console.log(list.head);
-console.log(list.tail());
+// console.log(list.size());
+// console.log(list.head);
+// console.log(list.tail());
+console.log(list.at(0), list.at(1), list.at(2));
