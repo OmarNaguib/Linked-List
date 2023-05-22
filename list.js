@@ -79,12 +79,22 @@ function toString() {
   return string;
 }
 function insertAt(value, index) {
+  if (index === 0) {
+    prepend(value);
+    return;
+  }
   const nodeBefore = this.at(index - 1);
+  if (!nodeBefore) return;
   const newNode = ListNode(value);
   newNode.next = nodeBefore.next;
   nodeBefore.next = newNode;
 }
-function removeAt(index) {}
+function removeAt(index) {
+  const nodeBefore = this.at(index - 1);
+  if (!nodeBefore) return;
+  if (!nodeBefore.next) return;
+  nodeBefore.next = nodeBefore.next.next;
+}
 
 // list object
 function LinkedList(head = null) {
@@ -100,6 +110,7 @@ function LinkedList(head = null) {
     find,
     toString,
     insertAt,
+    removeAt,
   };
 }
 
@@ -124,5 +135,16 @@ list.prepend(3);
 // console.log(list.toString());
 
 list.insertAt(546546, 1);
+
+console.log(list.head);
+
+list.removeAt(1);
+list.removeAt(1);
+list.removeAt(1);
+console.log(list.head);
+
+list.insertAt(546546, 70);
+
+list.removeAt(30);
 
 console.log(list.head);
