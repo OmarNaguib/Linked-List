@@ -59,7 +59,15 @@ function contains(value) {
   }
   return false;
 }
-function find() {}
+function find(value) {
+  let [currentNode, index] = [this.head, 0];
+  while (currentNode) {
+    if (currentNode.value === value) return index;
+    currentNode = currentNode.next;
+    index += 1;
+  }
+  return null;
+}
 function toString() {}
 function insertAt(value, index) {}
 function removeAt(index) {}
@@ -75,6 +83,7 @@ function LinkedList(head = null) {
     at,
     pop,
     contains,
+    find,
   };
 }
 
@@ -92,4 +101,6 @@ list.prepend(3);
 // list.pop();
 // console.log(list.head);
 
-console.log(list.contains(1), list.contains(1000), list.contains(3));
+// console.log(list.contains(1), list.contains(1000), list.contains(3));
+
+console.log(list.find(1), list.find(2), list.find(3));
