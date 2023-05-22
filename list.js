@@ -43,7 +43,14 @@ function at(index) {
   }
   return currentNode || null;
 }
-function pop() {}
+function pop() {
+  if (!this.head.next) this.head = null;
+  else {
+    let currentNode = this.head;
+    while (currentNode.next.next) currentNode = currentNode.next;
+    currentNode.next = null;
+  }
+}
 function contains(value) {}
 function find() {}
 function toString() {}
@@ -59,6 +66,7 @@ function LinkedList(head = null) {
     size,
     tail,
     at,
+    pop,
   };
 }
 
@@ -68,4 +76,10 @@ list.prepend(3);
 // console.log(list.size());
 // console.log(list.head);
 // console.log(list.tail());
-console.log(list.at(0), list.at(1), list.at(2));
+// console.log(list.at(0), list.at(1), list.at(2));
+
+console.log(list.head);
+list.pop();
+console.log(list.head);
+list.pop();
+console.log(list.head);
